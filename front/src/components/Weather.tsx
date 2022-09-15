@@ -5,13 +5,11 @@ import dayjs from 'dayjs';
 type Props = {
   name: string;
   loc: string;
-  color: string;
+  className: string;
 };
 
-const Weather: FC<Props> = (props) => {
-  const color = props.color;
+const Weather = ({ name, loc, className }: Props) => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const loc = props.loc;
 
   const { data, error } = useSWR(
     `${import.meta.env.VITE_OW_API_URL}/weather?${loc}&appid=${
@@ -48,17 +46,15 @@ const Weather: FC<Props> = (props) => {
     );
   }
 
-  console.log(color);
-
   return (
     <div
-      className={`w-96 h-56 m-auto rounded-xl shadow-2xl bg-gradient-to-bl from-blue-500 to-blue-300 transform hover:scale-110 transition-transform duration-300 text-white relative`}
+      className={`${className} w-96 h-56 m-auto rounded-xl shadow-2xl bg-gradient-to-bl transform hover:scale-110 transition-transform duration-300 text-white relative`}
     >
       <div className='w-full px-8 absolute top-6'>
         <div className='flex justify-between'>
           <div>
             <p className='font-light'>City Name</p>
-            <p className='text-lg font-medium tracking-widest'>{props.name}</p>
+            <p className='text-lg font-medium tracking-widest'>{name}</p>
           </div>
           <div>
             <img

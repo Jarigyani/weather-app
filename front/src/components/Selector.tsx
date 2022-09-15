@@ -4,7 +4,7 @@ import Weather from './Weather';
 
 type Props = {
   country: string;
-  color: string;
+  className: string;
 };
 const Selector: FC<Props> = (props) => {
   const fetcher = (url: string) =>
@@ -28,6 +28,6 @@ const Selector: FC<Props> = (props) => {
   if (error) return <div>An error has occurred.</div>;
   if (!data) return <div></div>;
 
-  return <Weather name={name} loc={loc} color={props.color} />;
+  return <Weather name={name} loc={loc} className={props.className} />;
 };
 export default Selector;
