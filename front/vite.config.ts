@@ -9,14 +9,5 @@ export default defineConfig({
     port: 3000,
   },
   base: './',
-  root: './src',
-  build: {
-    /**
-     * GitHub Pages でメインブランチを公開する場合には、
-     * サーブするディレクトリには
-     * '/' (root) と '/docs' しか選択肢がない
-     */
-    outDir: '../docs',
-  },
   plugins: [react(), VitePWA()],
 });
