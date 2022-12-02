@@ -9,5 +9,8 @@ export default defineConfig({
     port: 3000,
   },
   base: './',
-  plugins: [react(), VitePWA()],
+  plugins: [
+    react(),
+    VitePWA({ registerType: 'autoUpdate', injectRegister: 'auto' }),
+  ],
 });
