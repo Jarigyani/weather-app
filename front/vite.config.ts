@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,5 +8,15 @@ export default defineConfig({
     host: true,
     port: 3000,
   },
-  plugins: [react()],
+  base: './',
+  root: './src',
+  build: {
+    /**
+     * GitHub Pages でメインブランチを公開する場合には、
+     * サーブするディレクトリには
+     * '/' (root) と '/docs' しか選択肢がない
+     */
+    outDir: '../docs',
+  },
+  plugins: [react(), VitePWA()],
 });
